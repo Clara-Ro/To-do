@@ -1,0 +1,26 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --brightBlue: hsl(220, 98%, 61%);
+    --checkBackground: linear-gradient( hsl(192, 100%, 67%) to hsl(280, 87%, 65%));
+    --very-Dark-Blue: hsl(235, 21%, 11%);
+    --very-Dark-Desaturated-Blue: hsl(235, 24%, 19%);
+    --light-Grayish-Blue: hsl(234, 39%, 85%);
+    --light-Grayish-Blue-hover: hsl(236, 33%, 92%);
+    --dark-Grayish-Blue: hsl(234, 11%, 52%);
+    --very-Dark-Grayish-Blue: hsl(233, 14%, 35%);
+    --very-Dark-Grayish-Blue: hsl(237, 14%, 26%);
+    
+}
+
+#root{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
