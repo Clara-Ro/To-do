@@ -1,12 +1,124 @@
+
 .container{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 80%;
+}
+
+.text{
+    display: flex;
+    flex-direction: row;  
+    justify-content: space-between;
+    align-items: center;
+    vertical-align: center;
+    width: 500px;
+}
+
+.text h1{
+    color: white;
+    font-size:3rem;
+    text-transform: uppercase;
+    margin: 0;
     
+}
+
+.text img{
+    height: 2rem;
+}
+.create-to-do{
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin: 30px 0;
+}
+
+.create{
+    outline: none;
+    border: none;
+    background: transparent;
+    color: white;
+    font-size: 1rem;
+    margin: 0 20px;
+}
+
+.to-doList, .create-to-do{
+    background-color: var(--very-Dark-Desaturated-Blue);
+}
+li{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: white;
+    border-bottom: 1px solid var(--dark-Grayish-Blue);
+    padding: 10px;
+}
+.check{
+    position: relative;
+}
+
+.checkbox-button{
+    appearance: none;
+    border: solid 2px var(--dark-Grayish-Blue);
+    border-radius: 50%;
+    width: 1.5rem;
+    height: 1.5rem;
+    cursor: pointer;
+}
+
+li.active input{
+    background: var(--checkBackground);
+    border: none;
+}
+
+li.active span{
+    color: var(--dark-Grayish-Blue);
+    text-decoration: line-through;
+}
+
+.check img{
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
 
-.text{
+.to-doList span{
+    margin: 0 20px;
+}
+
+.to-doList img{
+    margin-left: auto;
+    cursor: pointer;
+}
+
+.actions{
+    color: var(--dark-Grayish-Blue);
     display: flex;
     flex-direction: row;
+    align-items: center;
+    padding: 0.7rem;
+    justify-content: space-between;   
+}
+
+.actions button{
+    font-size: 1rem;
+    background-color: transparent;
+    outline: 0;
+    border: 0;
+    color: var(--dark-Grayish-Blue);
+    cursor: pointer;
+    transition: all ease 0.2s;
+}
+
+.actions button:hover{
+    color: white;
+}
+.actions button.active{
+    color: var(--brightBlue);
+}
+
+.filters button{
+    margin: 0.5rem;
 }
