@@ -50,6 +50,15 @@ export default function Task() {
         }
     }
 
+    function deleteToDo(id){
+        const index = list.findIndex((item)=>{
+            return( item.id === id)
+        })
+        const beforeList = list.slice(0, index)
+        const afterList = list.slice(index+1)
+        setList(beforeList.concat(afterList))
+    }
+
     return (
         <div className='container'>
             <div className='text'>
@@ -77,7 +86,7 @@ export default function Task() {
                                     {item.completed && <img src="/assets/icons/icon-check.svg" alt="check" />}
                                 </div>
                                 <span>{item.text}</span>
-                                <img src="/assets/icons/icon-cross.svg" alt="delete" />
+                                <img src="/assets/icons/icon-cross.svg" alt="delete" onClick={()=>{deleteToDo(item.id)}} />
                             </li>
                         )
                     })}
