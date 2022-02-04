@@ -2,6 +2,7 @@ import './index.css'
 import { useState } from 'react';
 
 export default function Task() {
+    const [text, setText] = useState()
     const [list, setList] = useState([
         {
             id: 0,
@@ -33,6 +34,22 @@ export default function Task() {
         setList([...list])
     }
 
+    function handleCreateToDo(text){
+        list.push({
+            id:list.length,
+            text,
+            completed:false
+        })
+        setList([...list])
+    }
+
+    function sendToDo({key}){
+        if(key==='Enter'){
+            handleCreateToDo(text)
+            setText('')
+        }
+    }
+
     return (
         <div className='container'>
             <div className='text'>
@@ -42,7 +59,10 @@ export default function Task() {
             
             <div className='create-to-do'>
                 <input type='checkbox' className='checkbox-button' disabled/>
-                <input className='create' placeholder='Create a new to do...'/>
+                <input className='create' placeholder='Create a new to do...'
+                value={text} onChange={(event)=>{
+                    setText(event.target.value)
+                }}onKeyDown={sendToDo}/>
             </div>
 
             <div className='to-doList'>
