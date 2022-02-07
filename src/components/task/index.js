@@ -1,31 +1,11 @@
 import './index.css'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function Task() {
     const [status, setStatus] = useState('all')
+    const [loading, setLoading] = useState(true)
     const [text, setText] = useState()
-    const [list, setList] = useState([
-        {
-            id: 0,
-            text: 'Terminar esse projeto',
-            completed: false
-        },
-        {
-            id: 1,
-            text: 'Ler',
-            completed: true
-        },
-        {
-            id: 2,
-            text: 'Bullet Journal',
-            completed: true
-        },
-        {
-            id: 3,
-            text: 'Jogar',
-            completed: false
-        }
-    ]);
+    const [list, setList] = useState([]);
 
     function handleToggleToDo(id){
         const index = list.findIndex((item)=>{
@@ -64,6 +44,7 @@ export default function Task() {
         const newList=list.filter((item)=> !item.completed)
         setList(newList)
     }
+
     let filteredList;
     switch(status){
         case 'all':
@@ -78,6 +59,18 @@ export default function Task() {
             filteredList = list.filter((item)=>item.completed)
             break;
     }
+
+    useEffect(()=>{
+        if(loading){
+            const savedList = localStorage.getItem('list')
+            if(savedList){
+                setList(JSON.parse(savedList))
+            } setLoading(false)
+        } else{
+            localStorage.setItem('list', JSON.stringify(list))
+        }
+    },[list])
+
     return (
         <div className='container'>
             <div className='text'>
