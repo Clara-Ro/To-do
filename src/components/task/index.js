@@ -92,7 +92,7 @@ export default function Task() {
                     })}
                 </ul>
                 <div className='actions'>
-                    <span>5 itens</span>
+                    <span>{list.filter((item)=> !item.completed).length} itens left</span>
                     <div className='filters'>
                         <button className='active'>All</button>
                         <button>Active</button>
