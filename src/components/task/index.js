@@ -2,6 +2,7 @@ import './index.css'
 import { useState } from 'react';
 
 export default function Task() {
+    const [status, setStatus] = useState('all')
     const [text, setText] = useState()
     const [list, setList] = useState([
         {
@@ -59,6 +60,24 @@ export default function Task() {
         setList(beforeList.concat(afterList))
     }
 
+    function clearCompleted(){
+        const newList=list.filter((item)=> !item.completed)
+        setList(newList)
+    }
+    let filteredList;
+    switch(status){
+        case 'all':
+            filteredList = list
+            break;
+        
+        case 'active':
+            filteredList = list.filter((item)=>!item.completed)
+            break;
+
+        case 'completed':
+            filteredList = list.filter((item)=>item.completed)
+            break;
+    }
     return (
         <div className='container'>
             <div className='text'>
@@ -76,7 +95,7 @@ export default function Task() {
 
             <div className='to-doList'>
                 <ul>
-                    {list.map((item) => {
+                    {filteredList.map((item) => {
                         return (
                             <li className={item.completed ? 'active' : ''}>
                                 <div className='check' onClick={()=>
@@ -94,11 +113,11 @@ export default function Task() {
                 <div className='actions'>
                     <span>{list.filter((item)=> !item.completed).length} itens left</span>
                     <div className='filters'>
-                        <button className='active'>All</button>
-                        <button>Active</button>
-                        <button>Completed</button>
+                        <button className={status=== 'all'? 'active' : ''} onClick={()=> setStatus('all')}>All</button>
+                        <button className={status=== 'active'? 'active' : ''} onClick={()=> setStatus('active')}>Active</button>
+                        <button className={status=== 'completed'? 'active' : ''} onClick={()=> setStatus('completed')}>Completed</button>
                     </div>
-                    <button>Clear Completed</button>
+                    <button onClick={clearCompleted}>Clear Completed</button>
                 </div>
             </div>
         </div>
