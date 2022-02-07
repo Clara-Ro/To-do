@@ -58,6 +58,10 @@ export default function Task() {
         case 'completed':
             filteredList = list.filter((item)=>item.completed)
             break;
+        
+        default:
+            filteredList =list
+            break;
     }
 
     useEffect(()=>{
@@ -69,7 +73,7 @@ export default function Task() {
         } else{
             localStorage.setItem('list', JSON.stringify(list))
         }
-    },[list])
+    },[list, loading])
 
     return (
         <div className='container'>
