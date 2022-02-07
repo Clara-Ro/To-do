@@ -7,6 +7,14 @@
     height: 80%;
 }
 
+.no-results{
+    color: var(--dark-Grayish-Blue);
+    font-size: 1.5rem;
+    padding: 1rem;
+    display: block;
+    text-align: center;
+}
+
 .text{
     display: flex;
     flex-direction: row;  

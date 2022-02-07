@@ -88,6 +88,7 @@ export default function Task() {
 
             <div className='to-doList'>
                 <ul>
+                    {list.length===0 && <span className='no-results'>Lista vazia, adicione algo :)</span>}
                     {filteredList.map((item) => {
                         return (
                             <li className={item.completed ? 'active' : ''}>
